@@ -16,3 +16,11 @@ stages:
     outs:
     - extracted_monthly_averages.csv
     - list_of_fields.npy
+  process:
+    cmd: python process.py
+    deps:
+    - Data/
+    - list_of_fields.npy
+    - process.py
+    outs:
+    - computed_monthly_averages.csv
