@@ -17,3 +17,24 @@ stages:
       md5: 50c2c2dbad229638aef40210fe775667.dir
       size: 56329979
       nfiles: 2
+  prepare:
+    cmd: python prepare.py
+    deps:
+    - path: Data/
+      hash: md5
+      md5: 50c2c2dbad229638aef40210fe775667.dir
+      size: 56329979
+      nfiles: 2
+    - path: prepare.py
+      hash: md5
+      md5: 59e7f7c06c46cd0c295a5cb02e4fd788
+      size: 2708
+    outs:
+    - path: extracted_monthly_averages.csv
+      hash: md5
+      md5: c999c31834fb8f291c19b42fcd85187d
+      size: 635
+    - path: list_of_fields.npy
+      hash: md5
+      md5: 3d9b737a9d2b9fa3e91d8b801947c1a4
+      size: 310

@@ -8,3 +8,11 @@ stages:
     - year
     outs:
     - Data/
+  prepare:
+    cmd: python prepare.py
+    deps:
+    - Data/
+    - prepare.py
+    outs:
+    - extracted_monthly_averages.csv
+    - list_of_fields.npy
