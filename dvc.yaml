@@ -24,3 +24,9 @@ stages:
     - process.py
     outs:
     - computed_monthly_averages.csv
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+    - computed_monthly_averages.csv
+    - evaluate.py
+    - extracted_monthly_averages.csv
