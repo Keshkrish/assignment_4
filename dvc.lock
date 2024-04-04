@@ -9,22 +9,22 @@ stages:
       size: 2387
     params:
       params.yaml:
-        n_locs: 2
+        n_locs: 1
         year: 2001
     outs:
     - path: Data/
       hash: md5
-      md5: d4936ba8cbb4399c81473535851938bd.dir
-      size: 799864
-      nfiles: 2
+      md5: be5f4cb429841b093def15f0d610176e.dir
+      size: 401824
+      nfiles: 1
   prepare:
     cmd: python prepare.py
     deps:
     - path: Data/
       hash: md5
-      md5: d4936ba8cbb4399c81473535851938bd.dir
-      size: 799864
-      nfiles: 2
+      md5: be5f4cb429841b093def15f0d610176e.dir
+      size: 401824
+      nfiles: 1
     - path: prepare.py
       hash: md5
       md5: 59e7f7c06c46cd0c295a5cb02e4fd788
@@ -32,8 +32,8 @@ stages:
     outs:
     - path: extracted_monthly_averages.csv
       hash: md5
-      md5: b308723feb1136e4c2632786effa3543
-      size: 775
+      md5: 65515745e2da57bdbaf704b79519015d
+      size: 415
     - path: list_of_fields.npy
       hash: md5
       md5: 0a1755ca7b1afc3dfc3c6c1f41c74023
@@ -43,9 +43,9 @@ stages:
     deps:
     - path: Data/
       hash: md5
-      md5: d4936ba8cbb4399c81473535851938bd.dir
-      size: 799864
-      nfiles: 2
+      md5: be5f4cb429841b093def15f0d610176e.dir
+      size: 401824
+      nfiles: 1
     - path: list_of_fields.npy
       hash: md5
       md5: 0a1755ca7b1afc3dfc3c6c1f41c74023
@@ -57,20 +57,20 @@ stages:
     outs:
     - path: computed_monthly_averages.csv
       hash: md5
-      md5: b185dcfdb12b0d11a0810de5708fcb48
-      size: 1323
+      md5: a4041e1ec571af31e689c8f02a38a7ca
+      size: 663
   evaluate:
     cmd: python evaluate.py
     deps:
     - path: computed_monthly_averages.csv
       hash: md5
-      md5: b185dcfdb12b0d11a0810de5708fcb48
-      size: 1323
+      md5: a4041e1ec571af31e689c8f02a38a7ca
+      size: 663
     - path: evaluate.py
       hash: md5
       md5: 4e399879143521ae650b8a875ce119b5
       size: 920
     - path: extracted_monthly_averages.csv
       hash: md5
-      md5: b308723feb1136e4c2632786effa3543
-      size: 775
+      md5: 65515745e2da57bdbaf704b79519015d
+      size: 415
