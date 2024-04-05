@@ -15,7 +15,9 @@ def extract_and_convert_to_float(value):
 
 final_df=pd.DataFrame() #Dataframe that stores the computed monthly averages
 list_of_fields=list(np.load('list_of_fields.npy',allow_pickle=True))#The list of fields obtained from prepare step
-map_fields={'MonthlyAverageRH':'DailyAverageRelativeHumidity','MonthlySeaLevelPressure':'DailyAverageSeaLevelPressure','MonthlyStationPressure':'DailyAverageStationPressure','MonthlyDewpointTemperature':'DailyAverageDewPointTemperature','MonthlyMeanTemperature':'DailyAverageDryBulbTemperature'}
+map_fields={'MonthlyAverageRH':'DailyAverageRelativeHumidity','MonthlySeaLevelPressure':'DailyAverageSeaLevelPressure',
+	   'MonthlyStationPressure':'DailyAverageStationPressure','MonthlyDewpointTemperature':'DailyAverageDewPointTemperature',
+	   'MonthlyMeanTemperature':'DailyAverageDryBulbTemperature','AWND':'DailyAverageWindSpeed'}
 #Above is a dictionary which maps the monthly aggregate fields to its corresponding daily fields
 
 selected_fields=[]

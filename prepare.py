@@ -12,7 +12,7 @@ def extract_and_convert_to_float(value):
         return float(numeric_part.group()) #returns the numeric part
     else:
         return None #If there is no numeric part, it returns None
-all_fields=['MonthlyAverageRH','MonthlySeaLevelPressure','MonthlyStationPressure','MonthlyDewpointTemperature','MonthlyMeanTemperature'] #These are the only fields which are averages of their daily fields counterparts.
+all_fields=['MonthlyAverageRH','MonthlySeaLevelPressure','MonthlyStationPressure','MonthlyDewpointTemperature','MonthlyMeanTemperature','AWND'] #These are the only fields which are averages of their daily fields counterparts.
 
 #In the next step we check if there are 12 non zero entries for each field, corresponding to 12 months. We discard the fields which do not have 12 non null entries.
 selected_fields=set(all_fields)#The fields that dont have 12 non null entries are removed from this set
