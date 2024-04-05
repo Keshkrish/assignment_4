@@ -14,7 +14,13 @@ def extract_and_convert_to_float(value):
         return None #If there is no numeric part, it returns None
 all_fields=['MonthlyAverageRH','MonthlySeaLevelPressure','MonthlyStationPressure','MonthlyDewpointTemperature','MonthlyMeanTemperature','AWND'] #These are the only fields which are averages of their daily fields counterparts.
 
-#In the next step we check if there are 12 non zero entries for each field, corresponding to 12 months. We discard the fields which do not have 12 non null entries.
+map_fields={'MonthlyAverageRH':'DailyAverageRelativeHumidity','MonthlySeaLevelPressure':'DailyAverageSeaLevelPressure',
+	   'MonthlyStationPressure':'DailyAverageStationPressure','MonthlyDewpointTemperature':'DailyAverageDewPointTemperature',
+	   'MonthlyMeanTemperature':'DailyAverageDryBulbTemperature','AWND':'DailyAverageWindSpeed'}
+#Above is a dictionary which maps the monthly aggregate fields to its corresponding daily fields
+
+#In the next step we check if there are 12 non zero entries for each monthly field, corresponding to 12 months. We discard the fields which do not have 12 non null entries.
+#We also check if the corresponding daily fields have atleast one entry and discard the fields that don't.
 selected_fields=set(all_fields)#The fields that dont have 12 non null entries are removed from this set
 final_df=pd.DataFrame() #Dataframe which stores the extracted monthly averages
 #print(selected_fields)
@@ -22,7 +28,7 @@ for file in sorted(os.listdir('Data')):
     if not file.startswith('.'):
         df=pd.read_csv(os.path.join('Data',file))
         for field in all_fields:
-            if df[field].count()!=12:
+            if df[field].count()!=12 and df[map_fields[field]].count()<=0:#Check if there are values for 12 months. Also check that there is atleast one daily value so that average can be computed
                 selected_fields.discard(field)
 selected_fields=list(selected_fields)
 for file in sorted(os.listdir('Data')):
