@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 cwd=os.getcwd()#Get the current working directory
 
+
 '''
     Function to read a yaml file
 '''

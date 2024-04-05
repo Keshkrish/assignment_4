@@ -28,7 +28,7 @@ for file in sorted(os.listdir('Data')):
     if not file.startswith('.'):
         df=pd.read_csv(os.path.join('Data',file))
         for field in all_fields:
-            if df[field].count()!=12 and df[map_fields[field]].count()<=0:#Check if there are values for 12 months. Also check that there is atleast one daily value so that average can be computed
+            if df[field].count()!=12 or df[map_fields[field]].count()<=0:#Check if there are values for 12 months. Also check that there is atleast one daily value so that average can be computed
                 selected_fields.discard(field)
 selected_fields=list(selected_fields)
 for file in sorted(os.listdir('Data')):
