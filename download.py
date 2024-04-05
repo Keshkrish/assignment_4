@@ -27,13 +27,14 @@ def select_files(year, num_files):
         text=page.read()
     soup = BeautifulSoup(text, 'html.parser')
     all_csv = [link.get('href') for link in soup.find_all('a', href=True) if link['href'].endswith('.csv')] #use BeautifulSoup to obtain a list of the names of all the csv files in the page
+    random.shuffle(all_csv) #To make random selections
     page.close()
     sampled_csv=[]
-    all_csv=all_csv[::-1] #reversing the list because it was observed that files towards the end had less null values for monthly fields
+    
     for csv in all_csv:
         url=base_url+year+'/'+csv
         df=pd.read_csv(url)
-        if df['MonthlyMeanTemperature'].count()==12: #If we do random sampling, more often we get files which has null values for all monthly fields. This requirement ensures that we have atleast one monthly field without null values to work with 
+        if df['MonthlyMeanTemperature'].count()==12 and df['DailyAverageDryBulbTemperature'].count()>0: #If we simply download without any requirement, more often we get files which has null values for all monthly fields/daily fields. This requirement ensures that we have atleast one monthly field without null values to work with 
             sampled_csv.append(csv)
         if len(sampled_csv)==num_files:
             break
