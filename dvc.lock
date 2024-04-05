@@ -9,22 +9,22 @@ stages:
       size: 2795
     params:
       params.yaml:
-        n_locs: 3
+        n_locs: 6
         year: 2002
     outs:
     - path: Data/
       hash: md5
-      md5: a40c19dfa2625b345489451e8e899a55.dir
-      size: 17155615
-      nfiles: 3
+      md5: 5c23bc3214a0cfb13e50bba288ac07e5.dir
+      size: 24777055
+      nfiles: 6
   prepare:
     cmd: python prepare.py
     deps:
     - path: Data/
       hash: md5
-      md5: a40c19dfa2625b345489451e8e899a55.dir
-      size: 17155615
-      nfiles: 3
+      md5: 5c23bc3214a0cfb13e50bba288ac07e5.dir
+      size: 24777055
+      nfiles: 6
     - path: prepare.py
       hash: md5
       md5: ce39c8671df951c23795eb3246ee7aa0
@@ -32,24 +32,24 @@ stages:
     outs:
     - path: extracted_monthly_averages.csv
       hash: md5
-      md5: 870a2304e4b767e8a9243324853cc0af
-      size: 1072
+      md5: 4163d016b809aaba37f4e683616ebb12
+      size: 2226
     - path: list_of_fields.npy
       hash: md5
-      md5: cf93d0f6c9a1625d7d309a428385de20
-      size: 322
+      md5: 0a1755ca7b1afc3dfc3c6c1f41c74023
+      size: 340
   process:
     cmd: python process.py
     deps:
     - path: Data/
       hash: md5
-      md5: a40c19dfa2625b345489451e8e899a55.dir
-      size: 17155615
-      nfiles: 3
+      md5: 5c23bc3214a0cfb13e50bba288ac07e5.dir
+      size: 24777055
+      nfiles: 6
     - path: list_of_fields.npy
       hash: md5
-      md5: cf93d0f6c9a1625d7d309a428385de20
-      size: 322
+      md5: 0a1755ca7b1afc3dfc3c6c1f41c74023
+      size: 340
     - path: process.py
       hash: md5
       md5: 8442fe0fa6841102df73810230e80457
@@ -57,20 +57,20 @@ stages:
     outs:
     - path: computed_monthly_averages.csv
       hash: md5
-      md5: a45519a0332ece479f429e918b940f7d
-      size: 1849
+      md5: e3b3833d1793889d2ff625ce9844c9ab
+      size: 3831
   evaluate:
     cmd: python evaluate.py
     deps:
     - path: computed_monthly_averages.csv
       hash: md5
-      md5: a45519a0332ece479f429e918b940f7d
-      size: 1849
+      md5: e3b3833d1793889d2ff625ce9844c9ab
+      size: 3831
     - path: evaluate.py
       hash: md5
       md5: 4e399879143521ae650b8a875ce119b5
       size: 920
     - path: extracted_monthly_averages.csv
       hash: md5
-      md5: 870a2304e4b767e8a9243324853cc0af
-      size: 1072
+      md5: 4163d016b809aaba37f4e683616ebb12
+      size: 2226
